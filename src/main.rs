@@ -1,8 +1,11 @@
 mod bug;
 mod bug_stack;
 mod color;
-mod spiral_array;
+mod game_error;
+mod game_type;
 mod position;
+mod spiral_array;
+
 
 use crate::bug::{Bug, Kind};
 use crate::bug_stack::BugStack;
