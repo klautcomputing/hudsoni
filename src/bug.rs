@@ -47,16 +47,7 @@ impl From<u8> for Kind {
 }
 
 impl From<Kind> for u8 {
-    fn from(item: Kind) -> Self {
-        match item {
-            Kind::Ant => 0,
-            Kind::Beetle => 1,
-            Kind::Grasshopper => 2,
-            Kind::Ladybug => 3,
-            Kind::Mosquito => 4,
-            Kind::Pillbug => 5,
-            Kind::Queen => 6,
-            Kind::Spider => 7,
-        }
+    fn from(kind: Kind) -> Self {
+        kind as u8
     }
 }

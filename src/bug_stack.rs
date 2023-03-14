@@ -1,7 +1,7 @@
 use crate::bug::Bug;
 use crate::color::Color;
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct BugStack {
     pub bugs: [Bug; 7],
     pub size: u8,

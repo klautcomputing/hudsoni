@@ -1,6 +1,8 @@
 mod bug;
 mod bug_stack;
 mod color;
+mod spiral_array;
+mod position;
 
 use crate::bug::{Bug, Kind};
 use crate::bug_stack::BugStack;
