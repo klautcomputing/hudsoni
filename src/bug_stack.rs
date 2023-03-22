@@ -1,18 +1,22 @@
-use crate::bug::Bug;
+use crate::piece::Piece;
 use crate::color::Color;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct BugStack {
-    pub bugs: [Bug; 7],
+    pub pieces: [Piece; 7],
     pub size: u8,
 }
 
 impl BugStack {
     pub fn new() -> Self {
         Self {
-            bugs: [Bug::new(); 7],
+            pieces: [Piece::new(); 7],
             size: 0,
         }
+    }
+
+    pub fn len(&self) -> usize {
+        self.size as usize
     }
 
     pub fn empty(&self) -> bool {
@@ -23,31 +27,31 @@ impl BugStack {
         if self.empty() {
             return None;
         }
-        Some(self.bugs[self.size as usize].color())
+        Some(self.pieces[self.size as usize].color())
     }
 
-    pub fn push_bug(&mut self, bug: Bug) {
+    pub fn push_piece(&mut self, piece: Piece) {
         if self.size == 7 {
             panic!("Trying to add an 8th bug to a BugStack")
         }
-        self.bugs[self.size as usize] = bug;
+        self.pieces[self.size as usize] = piece;
         self.size += 1;
     }
 
-    pub fn pop_bug(&mut self) -> Bug {
+    pub fn pop_piece(&mut self) -> Piece {
         if self.size == 0 {
             panic!("Trying to remove a bug from an empty BugStack")
         }
-        let bug = self.bugs[self.size as usize];
-        self.bugs[self.size as usize] = Bug::new();
         self.size -= 1;
-        bug
+        let piece = self.pieces[self.size as usize];
+        self.pieces[self.size as usize] = Piece::new();
+        piece
     }
 
-    pub fn top_bug(&mut self) -> Option<Bug> {
+    pub fn top_piece(&self) -> Option<Piece> {
         if self.size == 0 {
             return None;
         }
-        Some(self.bugs[(self.size - 1) as usize])
+        Some(self.pieces[(self.size - 1) as usize])
     }
 }
